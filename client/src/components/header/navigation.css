@@ -1,0 +1,34 @@
+/* ----------------Navigation------------------ */
+.navigation-container {
+  display: flex;
+  justify-content: space-between;
+  max-height: 76px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+}
+
+.header-navigation ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 55px;
+  padding: 25px 0 25px 0;
+  cursor: pointer;
+  color: #283841;
+  font-size: 16px;
+}
+.header-navigation ul li:hover {
+  font-weight: 600;
+  font-size: 16px;
+}
+.navigation-button {
+  display: flex;
+  justify-content: space-between;
+  gap: 100px;
+  padding: 15px 50px 15px 15px;
+}
+.navigation-favorites-heart {
+  height: 50px;
+  width: 50px;
+}

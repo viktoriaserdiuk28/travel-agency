@@ -1,0 +1,341 @@
+.main {
+  padding: 55px 117px 0 117px;
+  min-height: 100vh;
+}
+.main-text {
+  margin: 0 0 40px 0;
+}
+.main-title {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+  color: #283841;
+}
+.main-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  color: #283841;
+  opacity: 0.6;
+}
+/*--------------------tour card/hotel card -----------------------------*/
+.hotel-tour-output {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.tour-card.featured,
+.hotel-card.featured {
+  width: 400px;
+  height: 480px;
+  padding: 18px;
+}
+.tour-card hr,
+.hotel-card hr {
+  border: 1px dashed #ccc;
+}
+
+.tour-card-img,
+.hotel-card-img {
+  position: relative;
+}
+.tour-card-img button,
+.hotel-card-img button {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+.tour-card-img button img,
+.hotel-card-img button img {
+  width: 24px;
+  height: 24px;
+}
+.tour-card-info,
+.hotel-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0 0 10px 0;
+}
+
+.tour-card-main-img,
+.hotel-card-main-img {
+  width: 364px;
+  height: 300px;
+  margin: 0 0 18px 0;
+  border-radius: 20px;
+}
+
+.tour-card-info-country {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.tour-card-info-country p {
+  color: #283841;
+  opacity: 0.5;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "DM Sans", sans-serif;
+  margin: 0 0 0 5px;
+}
+
+.tour-card-info-rate,
+.hotel-card-info-rate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+}
+.tour-card-info-name-rate,
+.tour-card-info-age,
+.tour-card-info-group,
+.tour-card-info-price-duration,
+.hotel-card-info-name-rate,
+.hotel-card-info-country-city,
+.hotel-card-info-guests,
+.tour-card-info-price-price {
+  display: flex;
+  justify-content: space-between;
+}
+.tour-card-info-rate img,
+.hotel-card-info-rate img {
+  width: 20px;
+  height: 20px;
+}
+.tour-card-info-price-duration,
+.tour-card-info-price-price {
+  margin: 5px 0 0 0;
+}
+
+.tour-card-info-name-rate p,
+.hotel-card-info-name-rate p,
+.tour-card-info-price-duration p,
+.tour-card-info-price-price p {
+  color: #283841;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+}
+.tour-card-info-age p,
+.tour-card-info-group p,
+.hotel-card-info-country-city p,
+.hotel-card-info-guests p {
+  color: #283841;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "DM Sans", sans-serif;
+  opacity: 0.5;
+}
+
+/*---------------------------why choose us------------------*/
+.why-choose-us-container {
+  margin: 50px 0 100px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.why-choose-us-container-img {
+  width: 611px;
+  position: relative;
+}
+.why-choose-us-container-main-img {
+  width: 526px;
+  height: 564px;
+}
+
+.why-choose-us-container-tour-card-img {
+  width: 305px;
+  height: 367px;
+  position: absolute;
+  right: 5px;
+  top: 40px;
+  box-shadow: 6px 6px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 18px;
+}
+.why-choose-us-container-img-rate {
+  width: 128px;
+  height: 52px;
+  background-color: #fff;
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.why-choose-us-container-img-rate img {
+  width: 32px;
+  height: 32px;
+}
+.why-choose-us-container-info {
+  margin: 66px 0 0 0;
+}
+.why-choose-us-container-img-rate p,
+.why-choose-us-container-info-title h2,
+.why-choose-us-container-info-subtitle p,
+.why-choose-us-container-info-text p,
+.trending-destination-container-info p,
+.reviews-container-info p,
+.trending-destination-container-info h2,
+.reviews-container-info h2,
+.why-choose-us-container-info-list {
+  color: #283841;
+  font-family: "DM Sans", sans-serif;
+}
+
+.why-choose-us-container-img-rate p,
+.why-choose-us-container-info-title h2,
+.trending-destination-container-info h2,
+.reviews-container-info h2,
+.why-choose-us-container-info-list {
+  font-weight: 700;
+}
+.why-choose-us-container-img-rate p {
+  font-size: 22px;
+}
+
+.why-choose-us-container-info {
+  width: 975px;
+  height: 434px;
+}
+.why-choose-us-container-info-title h2,
+.trending-destination-container-info h2,
+.reviews-container-info h2 {
+  font-size: 56px;
+  text-transform: capitalize;
+}
+.why-choose-us-container-info-title span,
+.trending-destination-container-info span {
+  color: #c08b7d;
+}
+.why-choose-us-container-info-subtitle p,
+.why-choose-us-container-info-text p,
+.trending-destination-container-info p,
+.reviews-container-info p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  opacity: 0.6;
+}
+
+.why-choose-us-container-info-list {
+  font-size: 16px;
+  margin: 39px 0 19px 0;
+}
+.why-choose-us-container-info-list ul li {
+  padding: 0 0 20px 0;
+}
+.why-choose-us-container-info-list img {
+  margin: 0 14px 0 0;
+}
+.trending-destination-container-img {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin: 66px 0 0 0;
+}
+.trending-destination-container-info-p {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+
+  color: #283841;
+  font-family: "DM Sans", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+}
+.trending-destination-container-img-jakarta,
+.trending-destination-container-img-dubai,
+.trending-destination-container-img-london {
+  position: relative;
+}
+.trending-destination-container-jakarta-text,
+.trending-destination-container-dubai-text,
+.trending-destination-container-london-text {
+  position: absolute;
+  width: 468px;
+  height: 89px;
+  background-color: #fff;
+  border-radius: 20px;
+  top: -39px;
+  left: 20px;
+}
+.trending-destination-container-jakarta-text p,
+.trending-destination-container-dubai-text p,
+.trending-destination-container-london-text p {
+  color: #283841;
+  font-family: "DM Sans", sans-serif;
+  font-size: 34px;
+  line-height: 89px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/*--------------reviews----------------*/
+.reviews-container {
+  margin: 100px 0 0 0;
+}
+.reviews-container-info {
+  display: flex;
+  justify-content: space-between;
+}
+.reviews-container-info-button {
+  margin: 37px 0 0 0;
+  display: flex;
+  gap: 20px;
+}
+.reviews-prev-button {
+  background: url("../../assets/icons/leftPinkArrow.png") 50% no-repeat;
+}
+.reviews-prev-button:hover {
+  background: url("../../assets/icons/leftWhiteArrow.png") 50% no-repeat;
+}
+.reviews-next-button {
+  background: url("../../assets/icons/rightPinkArrow.png") 50% no-repeat;
+}
+.reviews-next-button:hover {
+  background: url("../../assets/icons/rightWhiteArrow.png") 50% no-repeat;
+}
+.reviews-prev-button,
+.reviews-next-button {
+  background-color: #fff;
+}
+.reviews-prev-button:hover,
+.reviews-next-button:hover {
+  background-color: #c08b7d;
+}
+.reviews {
+  display: flex;
+  justify-content: center;
+  gap: 42px;
+
+  margin: 35px 0 0 0;
+}
+
+/*----------------review--------------*/
+.review-container {
+  width: 390px;
+  height: 208px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 34px rgba(0, 0, 0, 0.16);
+}
+.review-container-text {
+  color: #283841;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  opacity: 0.6;
+  margin: 30px 10px 60px 10px;
+}
+.review-container-rate {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 10px 20px 10px;
+}
+.review-container-rate-name p {
+  color: #283841;
+  font-family: "DM Sans", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}

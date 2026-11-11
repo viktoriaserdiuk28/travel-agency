@@ -1,0 +1,119 @@
+.header-logo {
+  display: flex;
+  align-items: center;
+  margin: 0 0 0 15px;
+}
+.header-container {
+}
+
+
+
+/*---------------------------Header----------------------*/
+.header-container-main-info {
+  max-width: 1240px;
+  margin: 145px auto;
+}
+.header-container-main-info h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  font-size: 60px;
+  text-transform: capitalize;
+  text-align: center;
+  padding: 0 0 24px 0;
+}
+.header-container-main-info p {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 18px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+/*-----------------Choose destination----------------*/
+.choose-destination-container {
+  width: 420px;
+  height: 116px;
+  background-color: #fff;
+  border-radius: 30px 30px 0 0;
+}
+.choose-destination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.tour-option-travelers,
+.hotel-option-guests {
+  display: flex;
+  justify-content: center;
+}
+.tour-option-travelers button,
+.hotel-option-guests button {
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  background-color: #c08b7d;
+  border-radius: 50%;
+}
+
+.tour-option-travelers p,
+.tour-option-amount-of-travelers p,
+.hotel-option-amount-of-guests p,
+.hotel-option-guests p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #283841;
+}
+.tour-option-travelers p,
+.hotel-option-guests p {
+  margin: 0 10px 10px 10px;
+}
+.choose-destination-bed-button,
+.choose-destination-plane-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.choose-information {
+  width: 1686px;
+  height: 133px;
+  background-color: #fff;
+  border-radius: 0 24px 24px 24px;
+}
+
+.hotel-option form,
+.tour-option form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 28px;
+}
+
+.choose-destination-form-field input,
+.choose-destination-form-field select {
+  width: 280px;
+  height: 45px;
+  background-color: rgba(40, 56, 65, 0.1);
+  color: #283841;
+  border-radius: 6px;
+  appearance: none;
+}
+.choose-destination-form-field label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #283841;
+}
+
+.choose-destination-form-field input::placeholder {
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(40, 56, 65, 0.5);
+}

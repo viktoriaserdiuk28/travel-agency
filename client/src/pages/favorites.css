@@ -1,0 +1,12 @@
+.favorite-container {
+  width: 100%;
+  max-width: 1540px;
+  margin: 50px auto;
+}
+
+.favorite-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+}
