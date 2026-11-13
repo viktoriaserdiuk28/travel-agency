@@ -8,7 +8,7 @@ An interactive web application for exploring travel destinations, browsing accom
 
 Work in Progress
 
-# Features
+## Features
 
 - Explore available tours and hotels.
 - View detailed information about each tour and hotel.
