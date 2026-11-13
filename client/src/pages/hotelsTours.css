@@ -234,3 +234,6 @@
   border-radius: 20px;
   font-weight: 600;
 }
+.hotel-container-filter-price input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+}

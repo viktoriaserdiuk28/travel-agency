@@ -59,7 +59,7 @@ async function postReview(req, res) {
       );
     }
     get_result = await pool.query(
-      "SELECT review.id, review.text, review.rating, users.first_name FROM review INNER JOIN users ON review.user_id = users.id WHERE review.id = $1",
+      "SELECT review.id, review.text, review.rating, review.hotel_id, review.tour_id, users.first_name FROM review INNER JOIN users ON review.user_id = users.id WHERE review.id = $1",
       [post_result.rows[0].id],
     );
     if (get_result.rowCount !== 0) {

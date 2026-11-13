@@ -11,6 +11,7 @@ function HotelDetail({
   hoveredRating,
   setStarRating,
   setHoveredRating,
+  setReviewsData
 }) {
   const { id } = useParams();
   const [hotelReviews, setHotelReviews] = useState([]);
@@ -39,6 +40,7 @@ function HotelDetail({
       })
       .then((data) => {
         setHotelReviews((prevReview) => [...prevReview, data]);
+        setReviewsData((prevReview) => [...prevReview, data]);
         setStarRating(null);
         setNewReviewText("");
       })

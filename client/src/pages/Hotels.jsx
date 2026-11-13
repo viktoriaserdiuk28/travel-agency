@@ -33,8 +33,31 @@ function Hotels({
 
   const [amountOfGuests, setAmountOfGuests] = useState(Number(guests));
   const [selectedCityHotels, setSelectedCityHotels] = useState(allCities);
+
+  const [hotelFilter, setHotelFilter] = useState({
+    amountOfGuests: Number(guests),
+    selectedCityHotels: allCities,
+    min_price: "",
+    max_price: "",
+  });
+
+  const [hotelSort, setHotelSort] = useState("null");
+
+  function handleApplyHotelFilter() {
+    setHotelFilter({
+      amountOfGuests: amountOfGuests,
+      selectedCityHotels: selectedCityHotels,
+      min_price: price.min_price,
+      max_price: price.max_price,
+    });
+  }
+
   function handleCityHotels(selectedValue) {
     setSelectedCityHotels(selectedValue);
+  }
+
+  function handleSortHotelData(value) {
+    setHotelSort(value);
   }
 
   const hotelCityOptions = [
@@ -56,7 +79,7 @@ function Hotels({
   }
   function handleDeleteGuest(e) {
     e.preventDefault();
-    if (amountOfGuests > 1) {
+    if (amountOfGuests > 0) {
       setAmountOfGuests((prev) => prev - 1);
     }
   }
@@ -85,17 +108,65 @@ function Hotels({
   function handleHotelsFilter(e) {
     e.preventDefault();
   }
+  const hotelsWithRating = initialHotels.map((hotels) => {
+    const hotelReviews = reviewsData.filter(
+      (review) => review.hotel_id === hotels.id,
+    );
+
+    const hotelAverageRating =
+      hotelReviews.length > 0
+        ? hotelReviews.reduce((acc, curr) => acc + curr.rating, 0) /
+          hotelReviews.length
+        : null;
+
+    return { ...hotels, hotelAverageRating: hotelAverageRating };
+  });
+
+  const sortedHotels =
+    hotelSort === "priceFromHighToLow"
+      ? [...hotelsWithRating].sort((a, b) => b.price - a.price)
+      : hotelSort === "priceFromLowToHigh"
+        ? [...hotelsWithRating].sort((a, b) => a.price - b.price)
+        : hotelSort === "ratingFromHighToLow"
+          ? [...hotelsWithRating].sort(
+              (a, b) => b.hotelAverageRating - a.hotelAverageRating,
+            )
+          : hotelSort === "ratingFromLowToHigh"
+            ? [...hotelsWithRating].sort(
+                (a, b) => a.hotelAverageRating - b.hotelAverageRating,
+              )
+            : [...hotelsWithRating];
+
+  const filteredHotels = sortedHotels.filter(
+    (hotel) =>
+      hotelFilter.amountOfGuests <= hotel.max_guests &&
+      (hotelFilter.selectedCityHotels.length === 0
+        ? true
+        : hotelFilter.selectedCityHotels.some(
+            (city) => city.value === hotel.city,
+          )) &&
+      (hotelFilter.min_price === ""
+        ? true
+        : Number(hotel.price) >= Number(hotelFilter.min_price)) &&
+      (hotelFilter.max_price === ""
+        ? true
+        : Number(hotel.price) <= Number(hotelFilter.max_price)),
+  );
 
   return (
     <div className="hotels-container">
       <div className="hotel-container-sort-search">
         <div className="hotels-container-sort">
-          <select>
-            <option>Sort hotels</option>
-            <option>Price (from high to low)</option>
-            <option>Price (from low to high)</option>
-            <option>Rating (from high to low)</option>
-            <option>Rating (from low to high)</option>
+          <select onChange={(e) => handleSortHotelData(e.target.value)}>
+            <option value="null">Sort hotels</option>
+            <option value="priceFromHighToLow">Price (from high to low)</option>
+            <option value="priceFromLowToHigh">Price (from low to high)</option>
+            <option value="ratingFromHighToLow">
+              Rating (from high to low)
+            </option>
+            <option value="ratingFromLowToHigh">
+              Rating (from low to high)
+            </option>
           </select>
         </div>
         <div className="hotels-container-search">
@@ -152,98 +223,91 @@ function Hotels({
               </div>
             </div>
 
-            <button className="hotel-container-filter-apply-button">
+            <button
+              onClick={handleApplyHotelFilter}
+              className="hotel-container-filter-apply-button"
+            >
               Apply filters
             </button>
           </form>
         </div>
 
         <div className="hotel-container-hotel-card">
-          {initialHotels.map((hotels) => {
-            const hotelReviews = reviewsData.filter(
-              (review) => review.hotel_id === hotels.id,
-            );
-            const hotelAverageRating =
-              hotelReviews.length > 0
-                ? hotelReviews.reduce((acc, curr) => acc + curr.rating, 0) /
-                  hotelReviews.length
-                : null;
-            return (
-              <HotelCard
-                key={hotels.id}
-                name={hotels.name}
-                country={hotels.country}
-                city={hotels.city}
-                image_url={hotels.image_url}
-                price={hotels.price}
-                max_guests={hotels.max_guests}
-                hotelAverageRating={hotelAverageRating}
-                variant="catalog"
-                handleAddNewFavoriteHotel={() =>
-                  handleAddNewFavoriteHotel(hotels.id)
-                }
-                favoriteHotels={favoriteHotels}
-                favoriteHotelsId={hotels.id}
-                handleDeleteFavoriteHotel={() =>
-                  handleDeleteFavoriteHotel(hotels.id)
-                }
-                type="hotel"
-              >
-                <div className="hotel-card-buttons">
-                  <div className="hotel-card-delete-button">
-                    <button
-                      onClick={() => {
-                        setDeletionId(hotels.id);
-                        handleModalIsOpen();
-                      }}
-                    >
-                      Delete
-                    </button>
-                  </div>
-                  {deletionId !== null && deletionId === hotels.id && (
-                    <Modal
-                      className="hotel-modal"
-                      overlayClassName="modal-overlay"
-                      isOpen={modalIsOpen}
-                    >
-                      <div>
-                        <p>Are you sure you want to delete this hotel?</p>
-                      </div>
-                      <div className="modal-buttons">
-                        <button
-                          className="modal-delete-button"
-                          onClick={() => {
-                            handleDeleteHotels(deletionId);
-                            setDeletionId(null);
-                          }}
-                        >
-                          Delete
-                        </button>
-                        <button
-                          className="modal-cancel-button"
-                          onClick={() => {
-                            setDeletionId(null);
-                            setModalIsOpen(false);
-                          }}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    </Modal>
-                  )}
-
-                  <div>
-                    <Link
-                      className="hotel-card-details-link"
-                      to={`/hotels/${hotels.id}`}
-                    >
-                      View details
-                    </Link>
-                  </div>
+          {filteredHotels.map((hotels) => (
+            <HotelCard
+              key={hotels.id}
+              name={hotels.name}
+              country={hotels.country}
+              city={hotels.city}
+              image_url={hotels.image_url}
+              price={hotels.price}
+              max_guests={hotels.max_guests}
+              hotelAverageRating={hotels.hotelAverageRating}
+              variant="catalog"
+              handleAddNewFavoriteHotel={() =>
+                handleAddNewFavoriteHotel(hotels.id)
+              }
+              favoriteHotels={favoriteHotels}
+              favoriteHotelsId={hotels.id}
+              handleDeleteFavoriteHotel={() =>
+                handleDeleteFavoriteHotel(hotels.id)
+              }
+              type="hotel"
+            >
+              <div className="hotel-card-buttons">
+                <div className="hotel-card-delete-button">
+                  <button
+                    onClick={() => {
+                      setDeletionId(hotels.id);
+                      handleModalIsOpen();
+                    }}
+                  >
+                    Delete
+                  </button>
                 </div>
-              </HotelCard>
-            );
-          })}
+                {deletionId !== null && deletionId === hotels.id && (
+                  <Modal
+                    className="hotel-modal"
+                    overlayClassName="modal-overlay"
+                    isOpen={modalIsOpen}
+                  >
+                    <div>
+                      <p>Are you sure you want to delete this hotel?</p>
+                    </div>
+                    <div className="modal-buttons">
+                      <button
+                        className="modal-delete-button"
+                        onClick={() => {
+                          handleDeleteHotels(deletionId);
+                          setDeletionId(null);
+                        }}
+                      >
+                        Delete
+                      </button>
+                      <button
+                        className="modal-cancel-button"
+                        onClick={() => {
+                          setDeletionId(null);
+                          setModalIsOpen(false);
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </Modal>
+                )}
+
+                <div>
+                  <Link
+                    className="hotel-card-details-link"
+                    to={`/hotels/${hotels.id}`}
+                  >
+                    View details
+                  </Link>
+                </div>
+              </div>
+            </HotelCard>
+          ))}
         </div>
       </div>
     </div>

@@ -179,7 +179,6 @@ function App() {
                   setFavoriteHotels={setFavoriteHotels}
                   handleDeleteFavoriteHotel={handleDeleteFavoriteHotel}
                   handleDeleteFavoriteTour={handleDeleteFavoriteTour}
-                  
                 />
               </>
             }
@@ -238,6 +237,7 @@ function App() {
                 hoveredRating={hoveredRating}
                 setStarRating={setStarRating}
                 setHoveredRating={setHoveredRating}
+                setReviewsData={setReviewsData}
               />
             }
           />

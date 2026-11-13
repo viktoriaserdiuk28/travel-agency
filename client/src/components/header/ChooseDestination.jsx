@@ -11,8 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 function ChooseDestination({ initialHotels, initialTours }) {
   const [isChosen, setIsChosen] = useState("hotel");
-  const [amountOfTravelers, setAmountOfTravelers] = useState(1);
-  const [amountOfGuests, setAmountOfGuests] = useState(1);
+  const [amountOfTravelers, setAmountOfTravelers] = useState(0);
+  const [amountOfGuests, setAmountOfGuests] = useState(0);
   const [selectedCityHotels, setSelectedCityHotels] = useState([]);
   const [selectedCountryTours, setSelectedCountryTours] = useState([]);
 
@@ -41,7 +41,7 @@ function ChooseDestination({ initialHotels, initialTours }) {
   }
   function handleDeleteTraveler(e) {
     e.preventDefault();
-    if (amountOfTravelers > 1) {
+    if (amountOfTravelers > 0) {
       setAmountOfTravelers((prev) => prev - 1);
     }
   }
@@ -53,7 +53,7 @@ function ChooseDestination({ initialHotels, initialTours }) {
   }
   function handleDeleteGuest(e) {
     e.preventDefault();
-    if (amountOfGuests > 1) {
+    if (amountOfGuests > 0) {
       setAmountOfGuests((prev) => prev - 1);
     }
   }
